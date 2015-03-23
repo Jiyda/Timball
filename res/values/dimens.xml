@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="padding_list">5dp</dimen>
+    <dimen name="padding_detail_info">10dp</dimen>
+    <dimen name="padding_search">10dp</dimen>
+    <dimen name="padding_image">5dp</dimen>
+    <dimen name="padding_list_row">10dp</dimen>
+    <dimen name="margin_top">10dp</dimen>
+    <dimen name="margin_image">10dp</dimen>
+    <dimen name="margin_share">10dp</dimen>
+    <dimen name="margin_menu_main">10dp</dimen>
+    <dimen name="sliding_menu_paddingRight">20dp</dimen>
+    <dimen name="sliding_menu_paddingTop">20dp</dimen>
+    <dimen name="slidingmenu_offset">60dp</dimen>
+    <dimen name="shadow_width">15dp</dimen>
+
+    <!-- Splash Screen -->
+    <dimen name="splash_padding_left">30dp</dimen>
+    <dimen name="splash_padding_right">30dp</dimen>
+    <dimen name="app_name_size">26sp</dimen>
+    <dimen name="app_name_margin_bottom">15dp</dimen>
+    <dimen name="progress_width">180dp</dimen>
+
+    <!-- Paging Listview -->
+    <dimen name="loading_view_margin_layout">10dp</dimen>
+    <dimen name="loading_view_progress_size">50dp</dimen>
+    <dimen name="loading_view_margin_right">5dp</dimen>
+
+    <!-- Home Activity -->
+    <dimen name="thumb_width">85dp</dimen>
+    <dimen name="thumb_height">85dp</dimen>
+    <dimen name="title_size">18sp</dimen>
+    <dimen name="subtitle_size">16sp</dimen>
+    <dimen name="thumb_margin_right">10dp</dimen>
+    <dimen name="title_margin_bottom">3dp</dimen>
+
+    <!-- marker -->
+    <dimen name="marker_size">36dp</dimen>
+
+    <!-- height -->
+    <dimen name="height_progressbar">6dp</dimen>
+    <dimen name="height_image">100dp</dimen>
+
+    <!--
+         Per the design guidelines, navigation drawers should be between 240dp and 320dp:
+         https://developer.android.com/design/patterns/navigation-drawer.html
+    -->
+    <dimen name="navigation_drawer_width">240dp</dimen>
+
+    <!-- Setting Preference zoom -->
+    <dimen name="padding_zoom">20dp</dimen>
+    <dimen name="margin_zoom_seekbar">10dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+</resources>

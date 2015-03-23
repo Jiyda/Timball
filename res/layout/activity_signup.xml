@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView 
+    android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/content_background"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+    
+	<LinearLayout  
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical"
+	    android:padding="@dimen/padding_detail_info">
+	   
+	    <TextView
+	        android:id="@+id/lblAppName"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textColor="@color/text_title"
+			android:textStyle="bold"
+			android:layout_gravity="center_horizontal"
+			android:layout_marginTop="@dimen/padding_detail_info"
+			android:layout_marginBottom="@dimen/padding_detail_info"
+			style="@android:style/TextAppearance.Large"
+			android:text="@string/app_name"/>
+	    
+	       <EditText
+            android:id="@+id/as_editTextEmailUse"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20.0dip"
+           android:layout_marginRight="30dip"
+           android:layout_marginLeft="30dip"
+            android:hint="@string/hint_email"
+            android:inputType="textEmailAddress" />
+   <EditText
+            android:id="@+id/as_editTextUser"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20.0dip"
+           android:layout_marginRight="30dip"
+             android:layout_marginLeft="30dip"
+            android:hint="@string/hint_username"
+            android:inputType="text" />
+        <EditText
+            android:id="@+id/as_editTextPassUse"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20.0dip"
+           android:layout_marginRight="30dip"
+             android:layout_marginLeft="30dip"
+            android:hint="@string/hint_password"
+            android:inputType="textPassword" />
+     
+	    
+	    <Button 
+	        android:id="@+id/as_btnSignup"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:text="@string/btn_signup"
+	        android:background="@drawable/apptheme_btn_default_holo_light"
+	        style="@android:style/TextAppearance.Medium"
+	        android:textColor="@color/btn_txt"
+	        />
+	</LinearLayout>
+	
+	
+</ScrollView>
+	

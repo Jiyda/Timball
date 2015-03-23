@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- app string -->
+    <string name="app_name">Timball</string>
+
+    <!-- Need Change with your -->
+    <!-- Admob -->
+    <string name="admob_id">YOUR_ADMOB_ID_HERE</string>
+
+    <!-- Facebook and Twitter configuration -->
+    <string name="facebook_app_id">434610976688336</string>
+    <string name="twitter_consumer_key">g1T2BByTLUQ8cyHhxBtd6Rjaa</string>
+    <string name="twitter_secret_key">UeZPBXE8nFS0a0atqnw0BpuHuULrRfWWayVWlqAn33Kjzk56Vu</string>
+
+    <!-- google play url -->
+    <string name="gplay_url">market://details?id=com.cmu.timball</string>
+
+    <!-- Copyright -->
+    <string name="copyright">&#169; Timball.website. All rights reserved.</string>
+
+    <!-- hint -->
+    <string name="hint_share">What do you think ?</string>
+    <string name="loading_data">Loading data&#8230;</string>
+    <string name="hint_search">Type Name</string>
+    <string name="hint_username">username</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+
+    <!-- button -->
+    <string name="btn_login">Login</string>
+    <string name="btn_signup">Sign up</string>
+    <string name="btn_other_apps">Other Apps</string>
+    <string name="btn_share">Share</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_load_more">Load More</string>
+    <string name="btn_tell_friend">Tell a Friend</string>
+    <string name="btn_rate_app">Rate App</string>
+
+    <!-- Messagebox -->
+    <string name="msgbox_title_cancel">Canceled</string>
+    <string name="msgbox_message_not_granted">permission not granted</string>
+    <string name="msgbox_button_ok">OK</string>
+
+    <!-- label -->
+    <string name="lbl_share_to">Share to:</string>
+    <string name="lbl_no_result">No Result</string>
+    <string name="menu_arround">Around You</string>
+    <string name="menu_reroute">Reroute</string>
+    <string name="menu_search">Search</string>
+    <string name="loading">Loading&#8230;</string>
+    <string name="error_server">Server is under construction or \n connection is unstable</string>
+    <string name="connected_social">Connected as</string>
+
+    <string-array name="menu_list">
+        <item>Latest</item>
+        <item>Category</item>
+        <item>Setting</item>
+        <item>Profile</item>
+        <item>About</item>
+    </string-array>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_activity_profile">Profile</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="sp_no_player">
+        <item >Select no. of Players</item>
+        <item >10 players</item>
+        <item >14 players</item>
+        <item >22 players</item>
+    </string-array>
+    
+</resources>
