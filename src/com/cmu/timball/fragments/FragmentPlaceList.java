@@ -34,7 +34,7 @@ public class FragmentPlaceList extends Fragment implements OnClickListener {
 	private OnListSelectedListener mCallback;
 
 	boolean loadingMore = false;
-	
+	// A hashmap that will contain all the games in the database
 	private ArrayList<HashMap<String, String>> mItems;
 	private ProgressDialog pDialog;
     
@@ -110,7 +110,7 @@ public class FragmentPlaceList extends Fragment implements OnClickListener {
 		mCategoryId 	= bundle.getString(utils.EXTRA_CATEGORY_ID);    
 		
 		mItems = new ArrayList<HashMap<String, String>>();
-		
+		// if network available load the first 10 games into the items map 
 		if(utils.isNetworkAvailable()){	
 			new loadFirstListView().execute();
 		} else {
@@ -180,7 +180,7 @@ public class FragmentPlaceList extends Fragment implements OnClickListener {
     }
 	
 
-	// Load first 10 videos
+	// Load first 10 games
 	private class loadFirstListView extends AsyncTask<Void, Void, Void> {
 		 
         @Override
@@ -234,7 +234,7 @@ public class FragmentPlaceList extends Fragment implements OnClickListener {
         }
     }
 	
-	// Load more videos
+	// Load more 
     private class loadMoreListView extends AsyncTask<Void, Void, Void> {
  
         @Override
@@ -285,7 +285,7 @@ public class FragmentPlaceList extends Fragment implements OnClickListener {
         }
     }
 	
-    // Method get data from server
+    // Method get data from server which loads the games to the app
 	public void getDataFromServer(){
 	       
         try {

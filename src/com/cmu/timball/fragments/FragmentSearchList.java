@@ -176,7 +176,7 @@ public class FragmentSearchList extends Fragment implements OnClickListener{
         }
     }
 		
-	// Load first 10 videos
+	// Load first 10 games
 	private class loadFirstListView extends AsyncTask<Void, Void, Void> {
 		 
         @Override
@@ -231,7 +231,7 @@ public class FragmentSearchList extends Fragment implements OnClickListener{
             
         }
     }
-	// Load more videos
+	// Load more games
     private class loadMoreListView extends AsyncTask<Void, Void, Void> {
     	
         @Override

@@ -22,10 +22,10 @@
 	
 	<color name="search_background">#d6d6d6</color>
     <color name="content_background">#ffffff</color>
-    <color name="sliding_content_background">#394263</color>
+    <color name="sliding_content_background">#2F9DB3</color>
     <color name="sliding_listSelector">#1fa9ac</color>
     <color name="sliding_text">#ffffff</color>
-    <color name="menu_line">#2d334c</color>
+    <color name="menu_line">#ffffff</color>
     
     <!-- setting preference -->
     <color name="label">#aaaaaa</color>

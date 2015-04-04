@@ -45,6 +45,7 @@ public class UserFunctions {
 	private final String service_category_list 	  = "category_list?";
 	private final String service_place_by_category= "place_by_category?";
 	private final String service_place_by_search  = "place_by_search_name?";
+	private final String service_joined_games  = "joined_games?";
 	public final String service_view_location 	  = "view-location.php?";
 	private final String service_desc 	  	  	  = "description.php?";
 	
@@ -103,6 +104,7 @@ public class UserFunctions {
 	public final String array_category_list	   = "categoryList";
 	public final String array_place_by_category= "placeByCategory";
 	public final String array_place_by_search  = "placeBySearchName";
+	public final String array_games_joined  = "GamesJoinedByUser";
 	public final String array_register_id		= "registerID";
 	
 	// LoadUrl
@@ -163,6 +165,13 @@ public class UserFunctions {
 	
 	public JSONObject searchByName(String valueKeyName, int valueStartIndex, int valueItemsPerPage){
 		webService = URLApi+service_place_by_search+param_key_name+valueKeyName+"&"+param_start_index+valueStartIndex+"&"+param_items_per_page+valueItemsPerPage;
+		JSONObject json = jsonParser.getJSONFromUrl(webService);
+		return json;
+	}
+	
+	public JSONObject gamesJoined(String email, int valueStartIndex, int valueItemsPerPage){
+		
+		webService = URLApi+service_joined_games+param_email+email+"&"+param_start_index+valueStartIndex+"&"+param_items_per_page+valueItemsPerPage;
 		JSONObject json = jsonParser.getJSONFromUrl(webService);
 		return json;
 	}

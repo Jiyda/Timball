@@ -147,7 +147,8 @@
     <string name="page_place_list">Place List</string>
     <string name="page_setting">Settings</string>
     <string name="page_search">Search</string>
-    <string name="page_detail_place">Detail</string>
+    <string name="page_games_joined">Games Joined</string>
+    <string name="page_detail_place">Game </string>
     <string name="page_share">Share</string>
     <string name="page_about">About</string>
     
@@ -163,6 +164,7 @@
    	<string name="menu_refresh">Refresh</string>
    	<string name="menu_stop">Stop</string>
    	<string name="menu_browser">Open in browser</string>
+   
 
 </resources>
 

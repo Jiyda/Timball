@@ -18,13 +18,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ActivityProfile extends ActionBarActivity {
-
+	
+	public final static String EXTRA_EMAIL = "email";
 	private ActionBar actionbar;
 	TextView lbl_email_id1,lbl_game_type1,lbl_location1,lbl_email_id,lbl_game_type,lbl_location, cl1,cl2,cl3;
 	Button btn_logout;
 	Global_data gda;
 	Context cntxt;
-	String game_t="", location ="";
+	
 	private UserFunctions userFunction;
 	ProgressDialog pd;
 	
@@ -55,8 +56,7 @@ public class ActivityProfile extends ActionBarActivity {
      	
      	btn_logout = (Button) findViewById(R.id.btn_logout);
      	
-     	game_t = gda.loadSavedPreferences_string(gda.TAG_GAME_TYPE, cntxt);
-     	location = gda.loadSavedPreferences_string(gda.TAG_LOCATION, cntxt);
+     	
      	lbl_email_id1.setText("Email Address");
      	cl1.setText(": ");
      	lbl_email_id.setText(gda.loadSavedPreferences_string(gda.TAG_EMAIL, cntxt));
@@ -77,84 +77,11 @@ public class ActivityProfile extends ActionBarActivity {
 			}
 		});
      	
-     	if(location.trim().length()>0){
-     		location = location.replaceAll("," , "\n");
-     		
-     	}
      	
-     	if(game_t.trim().length()==0){
-     		new GetgameAsyncTask().execute("");
-     	}else{
-     		game_t = game_t.replaceAll("," , "\n");
-     		lbl_game_type1.setText("Games Joined (by ID):");
-     		lbl_game_type.setText(game_t);
-     		cl2.setText(": ");
-     	}
      	
      	
 	}
 
-	public class GetgameAsyncTask extends AsyncTask<String,Void,String> {
-
-		
-		
-		@Override
-		protected void onPreExecute() {
-			pd = new ProgressDialog(ActivityProfile.this);
-			pd.setTitle("Loading Game & Location..");
-			pd.setMessage("Please wait...");
-			pd.setCancelable(false);
-			pd.show();
-		}
-
-		@Override
-		protected String doInBackground(String... params) {
-			
-			String email = gda.loadSavedPreferences_string(gda.TAG_EMAIL, cntxt);
-			return userFunction.getgame(email);
-        }
-
-		@Override
-		protected void onPostExecute(String response) {
-			try{
-				if(response!=null && !(response.equals("0"))){
-					gda.savePreferences(gda.TAG_GAME_TYPE, response, cntxt);
-					response = response.replaceAll("," , "\n");
-					lbl_game_type1.setText("Games Joined (by ID):");
-					lbl_game_type.setText(response);
-					cl2.setText(": ");
-				}
-				
-			}
-			catch(Exception e){	}
-			new GetlocationAsyncTask().execute("");
-		}
-	}
-	
-	public class GetlocationAsyncTask extends AsyncTask<String,Void,String> {
-		@Override
-		protected String doInBackground(String... params) {
-			String email = gda.loadSavedPreferences_string(gda.TAG_EMAIL, cntxt);
-			return userFunction.getlocation(email);
-        }
-
-		@Override
-		protected void onPostExecute(String response) {
-			if(pd!=null){ pd.dismiss(); }
-			
-			try{
-				if(response!=null && !(response.equals("0"))){
-					gda.savePreferences(gda.TAG_LOCATION, response, cntxt);
-					response = response.replaceAll("," , "\n");
-		     		
-		     		
-				}
-				
-			}
-			catch(Exception e){	}			
-		}
-	}
-	
 	// Listener for option menu
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -179,5 +106,15 @@ super.onBackPressed();
 		overridePendingTransition (R.anim.open_main, R.anim.close_next);
 		
 	}
+
+
+	
+	public void list_of_joined_games(View view) {
+	    Intent intent = new Intent(this, ActivityGamesJoined.class);
+	    intent.putExtra(EXTRA_EMAIL, gda.loadSavedPreferences_string(gda.TAG_EMAIL, cntxt));
+	    startActivity(intent);
+	}
+
+
 
 }

@@ -346,17 +346,15 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 					game_string = "";
 				for(int i=0;i<items.size();i++){ 
 					if(!items.get(i).trim().equals(mGetLocationId)){ 
-						if(i==items.size()-1){
-						  game_string +=   mGetLocationId;
-						} else{
-							 game_string +=   mGetLocationId+",";
-						}
-						
+						 game_string +=   items.get(i)+",";
 						} 
 				}
+				
 				if (game_string == ""){
 					game_string = "None";
 				}
+				//remove trailing comma
+				game_string = game_string.replaceAll(",$", "");
 				
 				
 				

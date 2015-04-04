@@ -1,12 +1,4 @@
-/**
-    * File        : ActivitySearch.java
-    * App name    : Perkutut
-    * Version     : 1.2.0
-    * Created     : 01/19/14
 
-    * Created by Taufan Erfiyanto & Cahaya Pangripta Alam on 11/24/13.
-    * Copyright (c) 2013 pongodev. All rights reserved.
-    */
 
 package com.cmu.timball;
 
@@ -56,6 +48,7 @@ public class ActivitySearch extends ActionBarActivity implements FragmentSearchL
 		
 		// Get the intent, verify the action and get the query
 	    Intent intent = getIntent();
+	    
 	    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
 	      keyword = intent.getStringExtra(SearchManager.QUERY);
 	      SearchRecentSuggestions suggestions = new SearchRecentSuggestions(this,

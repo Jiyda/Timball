@@ -134,6 +134,13 @@
             android:name=".ActivityDirection"
             android:label="@string/direction" />
         <activity
+        android:name=".ActivityGamesJoined"
+        android:label="@string/page_games_joined" />
+        
+        
+        
+        
+        <activity
             android:name=".ActivityBrowser"
             android:label="@string/app_name"
             android:screenOrientation="portrait"

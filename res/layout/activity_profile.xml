@@ -36,7 +36,14 @@
         </LinearLayout>
                 
        
-        
+        <Button android:id="@+id/btn_games_joined" 
+             android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin_share"
+             android:background="@drawable/apptheme_btn_default_holo_light"
+	        android:textColor="@color/btn_txt"
+	        style="@android:style/TextAppearance.Medium"
+            android:layout_gravity="center_horizontal" android:text="Games Joined"
+            android:onClick="list_of_joined_games"
+            />
        
         
         
