@@ -79,16 +79,14 @@ public class ActivityProfile extends ActionBarActivity {
      	
      	if(location.trim().length()>0){
      		location = location.replaceAll("," , "\n");
-     		lbl_location1.setText("Location");
-     		cl3.setText(": ");
-     		lbl_location.setText(location);
+     		
      	}
      	
      	if(game_t.trim().length()==0){
      		new GetgameAsyncTask().execute("");
      	}else{
      		game_t = game_t.replaceAll("," , "\n");
-     		lbl_game_type1.setText("Game Type");
+     		lbl_game_type1.setText("Games Joined (by ID):");
      		lbl_game_type.setText(game_t);
      		cl2.setText(": ");
      	}
@@ -122,7 +120,7 @@ public class ActivityProfile extends ActionBarActivity {
 				if(response!=null && !(response.equals("0"))){
 					gda.savePreferences(gda.TAG_GAME_TYPE, response, cntxt);
 					response = response.replaceAll("," , "\n");
-					lbl_game_type1.setText("Game Type");
+					lbl_game_type1.setText("Games Joined (by ID):");
 					lbl_game_type.setText(response);
 					cl2.setText(": ");
 				}
@@ -148,9 +146,7 @@ public class ActivityProfile extends ActionBarActivity {
 				if(response!=null && !(response.equals("0"))){
 					gda.savePreferences(gda.TAG_LOCATION, response, cntxt);
 					response = response.replaceAll("," , "\n");
-		     		lbl_location1.setText("Location");
-		     		lbl_location.setText(response);
-		     		cl3.setText(": ");
+		     		
 		     		
 				}
 				

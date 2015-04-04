@@ -1,11 +1,5 @@
 /**
     * File        : ActivityDetailPlace.java
-    * App name    : Perkutut
-    * Version     : 1.2.0
-    * Created     : 01/19/14
-
-    * Created by Taufan Erfiyanto & Cahaya Pangripta Alam on 11/24/13.
-    * Copyright (c) 2013 pongodev. All rights reserved.
     */
 
 package com.cmu.timball;
@@ -92,7 +86,7 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 	private TextView lblPlaceName, lblAddress, lblPhone, lblWebsite, lblNoResult, lblAlert, lbldate, lblstime, lbletime, lbl_players;
 	private ImageView imgThumbnail;
 	private LinearLayout lytMedia, lytRetry, lytDetail;
-	private Button btnRetry, btn_join_game;
+	private Button btnRetry, btn_join_game, btn_leave_game;
 	private ImageButton imgBtnShare, imgBtnDirection;
 //	private Spinner sp_no_players;
 	// Declare object to handle map
@@ -155,6 +149,7 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 		lbl_players = (TextView) findViewById(R.id.lbl_players);
 		
 		btn_join_game = (Button) findViewById(R.id.btn_join_game); 
+		btn_leave_game = (Button) findViewById(R.id.btn_leave_game);
 	//	sp_no_players = (Spinner) findViewById(R.id.sp_no_players);
 	//	sp_no_players.setSelection(0);
 		
@@ -199,32 +194,30 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
  			}
  		}
      	     
-		
+		// Joining a Game button 
+ 		
  		btn_join_game.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-			/*	int item_pos = sp_no_players.getSelectedItemPosition(); 
-				String game_type = mgame_type;
-				if(item_pos==0){
-					Toast.makeText(getApplicationContext(), "Select number of players", Toast.LENGTH_SHORT).show();
-				}else{
-					
-					if(game_type.equalsIgnoreCase("5 vs 5") && item_pos<1)
-						Toast.makeText(getApplicationContext(), "Initially 10 players needed", Toast.LENGTH_SHORT).show();
-					else if(game_type.equalsIgnoreCase("7 vs 7") && item_pos<2)
-						Toast.makeText(getApplicationContext(), "Initially 14 players needed", Toast.LENGTH_SHORT).show();
-					else if(game_type.equalsIgnoreCase("11 vs 11") && item_pos<3)
-						Toast.makeText(getApplicationContext(), "Initially 22 players needed", Toast.LENGTH_SHORT).show();
-					else{
-						
-						new JoingameAsyncTask().execute("");
-
-					}
-				}*/
+			
 				new JoingameAsyncTask().execute("");
 			}
 		});
+ 		
+ 		//Leaving a Game button 
+ 		btn_leave_game.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+			
+				new LeavegameAsyncTask().execute("");
+			}
+		});
+ 		
+ 		
+ 		
     }
+	
+	//Joining a Game
 		
 	public class JoingameAsyncTask extends AsyncTask<String,Void,String> {
 
@@ -237,7 +230,7 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 
 			game_type = lblWebsite.getText().toString();
 			pd = new ProgressDialog(ActivityDetailPlace.this);
-			pd.setTitle("Joing Game..");
+			pd.setTitle("Joining Game..");
 			pd.setMessage("Please wait...");
 			pd.setCancelable(false);
 			pd.show();
@@ -254,26 +247,20 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 			
 			game_string = gda.loadSavedPreferences_string(gda.TAG_GAME_TYPE, cntxt);
 			boolean status = false;
+			if(game_string.trim()=="None"){
+				game_string = "";
+			}
 			if(game_string.trim().length()>0){
-				List<String> items = Arrays.asList(game_string.split("\\s*,\\s*"));
-				for(int i=0;i<items.size();i++){ if(items.get(i).trim().equals(mgame_type)){ status=true; } }
-				if(!(status)){ game_string += ","+mgame_type; }
+				
+				 game_string += ","+mGetLocationId; 
 			}else{
-				game_string = mgame_type;
-			}
-			
-			location_string = gda.loadSavedPreferences_string(gda.TAG_LOCATION, cntxt);
-			status = false;
-			if(location_string.trim().length()>0){
-				List<String> items = Arrays.asList(location_string.split("\\s*,\\s*"));
-				for(int i=0;i<items.size();i++){ if(items.get(i).trim().equals(mLocationName)){ status=true; } }
-				if(!(status)){ location_string += ","+mLocationName; }
-			}else{
-				location_string = mLocationName;
+				game_string = mGetLocationId;
 			}
 			
 			
-           	return userFunction.joingame(email, game_string, players, mGetLocationId,location_string);
+			
+			
+           	return userFunction.joingame(email, game_string, players, mGetLocationId, game_string);
         }
 
 		@Override
@@ -291,12 +278,16 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 				//	Toast.makeText(getBaseContext(), dec_players + " Players Needed Now ", Toast.LENGTH_SHORT).show();
 					lbl_players.setText(dec_players+" Players Needed");
 					btn_join_game.setVisibility(View.GONE);
+					btn_leave_game.setVisibility(View.VISIBLE);
 					
 					if(dec_players==0){
 						dec_players=0;
 					//	btn_join_game.setEnabled(false);
 						btn_join_game.setVisibility(View.GONE);
 					}
+					
+						
+						
 				}
 				
 			}
@@ -309,6 +300,108 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 			
 		}
 	}
+	
+	
+	
+	//Leaving a Game
+	
+	
+	
+	public class LeavegameAsyncTask extends AsyncTask<String,Void,String> {
+
+		ProgressDialog pd;
+		String game_type;
+		String game_string, location_string;
+		
+		@Override
+		protected void onPreExecute() {
+
+			game_type = lblWebsite.getText().toString();
+			pd = new ProgressDialog(ActivityDetailPlace.this);
+			pd.setTitle("Leaving Game..");
+			pd.setMessage("Please wait...");
+			pd.setCancelable(false);
+			pd.show();
+		}
+
+
+		@Override
+		protected String doInBackground(String... params) {
+			
+			dec_players++;
+			String email = gda.loadSavedPreferences_string(gda.TAG_EMAIL, cntxt);
+			String players = String.valueOf(dec_players);
+			String game_type = lblWebsite.getText().toString().trim();
+			
+			game_string = gda.loadSavedPreferences_string(gda.TAG_GAME_TYPE, cntxt);
+			
+			
+			if(game_string.trim().length()>0){
+				
+				// Iterate over the list of Games joined (their ids). The game_string
+				// is of the format "L0004, L0003, L0005"
+				List<String> items = Arrays.asList(game_string.split("\\s*,\\s*"));
+				
+				
+					game_string = "";
+				for(int i=0;i<items.size();i++){ 
+					if(!items.get(i).trim().equals(mGetLocationId)){ 
+						if(i==items.size()-1){
+						  game_string +=   mGetLocationId;
+						} else{
+							 game_string +=   mGetLocationId+",";
+						}
+						
+						} 
+				}
+				if (game_string == ""){
+					game_string = "None";
+				}
+				
+				
+				
+			}
+			
+			
+			
+			
+           	return userFunction.leavegame(email, game_string, players, mGetLocationId, game_string);
+        }
+
+		@Override
+		protected void onPostExecute(String response) {
+			
+			if(pd!=null){
+				pd.dismiss();
+			}
+			try{
+				if(response!=null && Integer.parseInt(response)>0){
+					
+					gda.savePreferences(gda.TAG_LOCATION, location_string, cntxt);
+					gda.savePreferences(gda.TAG_GAME_TYPE, game_string, cntxt);
+					Toast.makeText(getBaseContext(), "Left Game", Toast.LENGTH_SHORT).show();
+				//	Toast.makeText(getBaseContext(), dec_players + " Players Needed Now ", Toast.LENGTH_SHORT).show();
+					lbl_players.setText(dec_players+" Players Needed");
+					btn_leave_game.setVisibility(View.GONE);
+					btn_join_game.setVisibility(View.VISIBLE);
+					
+				}
+				
+			}
+			catch(Exception e){
+				Toast.makeText(getBaseContext(), "something went wrong!", Toast.LENGTH_SHORT).show();
+				
+			}
+
+			
+			
+		}
+	}
+	
+	
+	
+	
+	
 	
 	// AsyncTask to Get Data from Server and put it on View Object
 	public class getDataAsync extends AsyncTask<Void, Void, Void>{
@@ -355,6 +448,7 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 				
 				if(mcateg_name.equalsIgnoreCase("open")){
 					btn_join_game.setVisibility(View.VISIBLE);
+					btn_leave_game.setVisibility(View.GONE);
 					
 					if(dec_players==0){
 						if(mgame_type.equalsIgnoreCase("5 vs 5"))
@@ -371,13 +465,19 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 				
 				game_string = gda.loadSavedPreferences_string(gda.TAG_GAME_TYPE, cntxt);
 				boolean status = false;
+				//check if user have joined this game or not before  
+				// loading the Join and Leave buttons
 				if(game_string.trim().length()>0){
 					List<String> items = Arrays.asList(game_string.split("\\s*,\\s*"));
-					for(int z=0;z<items.size();z++){ if(items.get(z).trim().equals(mgame_type)){ status=true; } }
+					for(int z=0;z<items.size();z++){ if(items.get(z).trim().equals(mGetLocationId)){ status=true; } }
 				}
-				
-				if(status)
+				//if he has joined the game
+				if(status){
 					btn_join_game.setVisibility(View.GONE);
+					btn_leave_game.setVisibility(View.VISIBLE);
+
+					
+				}
 				
 				lbl_players.setText(dec_players+" Players Needed");
 				

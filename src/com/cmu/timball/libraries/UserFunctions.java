@@ -190,6 +190,17 @@ public class UserFunctions {
 		return res;
 	}
 	
+	public String leavegame(String email,String game_type, String players, String location_id, String loc_name){
+		try {
+			game_type = URLEncoder.encode(game_type, "utf-8");
+			loc_name = URLEncoder.encode(loc_name, "utf-8");
+		} catch (UnsupportedEncodingException e1) { e1.printStackTrace(); }
+		webService = URLWS+service_join_game+param_email+email+"&"+param_game_type+game_type+"&"+param_players+players+"&"+param_location_id+location_id+"&"+param_loc_name+loc_name;
+		//Toast.makeText(cntxt.getApplicationContext(), webService, Toast.LENGTH_LONG).show();
+		String res = jsonParser.getStringFromUrl(webService);
+		return res;
+	}
+	
 	public String getgame(String email){
 		webService = URLWS+service_get_game+param_email+email;
 		//Toast.makeText(cntxt.getApplicationContext(), webService, Toast.LENGTH_LONG).show();
