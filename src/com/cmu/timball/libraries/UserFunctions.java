@@ -13,6 +13,7 @@ package com.cmu.timball.libraries;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
+import org.apache.http.entity.mime.MultipartEntity;
 import org.json.JSONObject;
 
 import android.content.Context;
@@ -54,6 +55,8 @@ public class UserFunctions {
 	private final String service_join_game  	  = "api_join_game.php?";
 	private final String service_get_game  	  = "get_user_game.php?";
 	private final String service_get_location  	  = "get_user_location.php?";
+	private final String service_location_upload  = "location_upload.php";
+	
 	
 	// Param
 	private final String param_start_index   	= "start_index=";
@@ -223,4 +226,13 @@ public class UserFunctions {
 		String res = jsonParser.getStringFromUrl(webService);
 		return res;
 	}
+	public JSONObject postLocationData(MultipartEntity ent){	
+
+		webService = URLWS+service_location_upload;
+		JSONObject jObject = jsonParser.postData(ent, webService);
+		return jObject;
+
+
+	}
+			
 }

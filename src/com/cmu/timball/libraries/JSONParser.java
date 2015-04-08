@@ -6,12 +6,16 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -91,6 +95,30 @@ public class JSONParser {
 
 		return str;
 
+	}
+	public JSONObject postData(MultipartEntity  ent, String url) {
+
+		try{
+			HttpClient httpClient = new DefaultHttpClient();
+			HttpPost post = new HttpPost (url);
+			post.setEntity (ent);
+			HttpResponse responsePOST = httpClient.execute(post);
+			HttpEntity entity = responsePOST.getEntity();
+			if (entity != null) {
+				String res=EntityUtils.toString(entity); 
+				if(res!=null && !res.equalsIgnoreCase("")){
+					jObj= new JSONObject(res);
+				}
+
+
+			}
+
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return jObj;
 	}
 
 }

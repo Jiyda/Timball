@@ -61,10 +61,10 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <!-- Google Maps for Android API v2 key. -->
+        <!-- Google Maps for Android API v2 key. AIzaSyAzI-6gg36mNW_86X7nu48tGe8GhVavIzY  --> 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyAzI-6gg36mNW_86X7nu48tGe8GhVavIzY" />
+            android:value="AIzaSyDQauz9YoGcDvIBTAnZjcUBdi10GaQV4GM" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -102,6 +102,15 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
+         <activity
+            android:name=".ActivityAddLocation"
+            android:screenOrientation="portrait"
+            android:label="Create Game" />
+          <activity
+            android:name=".ActivityPickPlace"
+            android:screenOrientation="portrait"
+            android:label="Pick Place" />
+        
         <activity
             android:name=".ActivityPlaceAroundYou"
             android:label="@string/page_around_you"

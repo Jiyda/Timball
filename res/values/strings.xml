@@ -26,10 +26,18 @@
     <string name="hint_username">username</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
-
+  <string name="hint_name">Name</string>
+      <string name="hint_address">Address</string>
+      <string name="hint_place_name">Place name</string>
+    <string name="hint_phone">Phone</string>
+      <string name="hint_desc">Description</string>
+      
     <!-- button -->
-    <string name="btn_login">Login</string>
+       <string name="btn_login">Login</string>
     <string name="btn_signup">Sign up</string>
+ 
+     <string name="btn_browse">Select Image from gallery</string>
+    <string name="btn_submit">Submit</string>
     <string name="btn_other_apps">Other Apps</string>
     <string name="btn_share">Share</string>
     <string name="btn_cancel">Cancel</string>
@@ -53,8 +61,9 @@
     <string name="connected_social">Connected as</string>
 
     <string-array name="menu_list">
-        <item>Latest</item>
-        <item>Category</item>
+        <item>Latest Games</item>
+        <item>Create Game</item>
+        <item>Categories</item>
         <item>Setting</item>
         <item>Profile</item>
         <item>About</item>

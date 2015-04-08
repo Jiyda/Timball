@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView 
+    android:id="@+id/aal_Scrollview"
+    android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/content_background"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+  
+	<LinearLayout  
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical"
+	    android:padding="@dimen/padding_detail_info">
+	  <TextView
+	             
+	               android:id="@+id/textView1"
+	                android:layout_gravity="center_vertical"
+                  		android:textColor="@color/text_title"
+			android:textStyle="bold"
+                    android:layout_marginTop="10dip"
+                     android:textAppearance="?android:attr/textAppearanceSmall"    
+                     android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                       android:text="Name:" />
+	   <EditText
+	        android:singleLine="true"
+            android:id="@+id/aal_editTextName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_name"
+            android:layout_gravity="center_horizontal"
+            android:inputType="text" />
+	    <TextView
+	             
+	               android:id="@+id/textView1"
+	                android:layout_gravity="center_vertical"
+                  		android:textColor="@color/text_title"
+			android:textStyle="bold"
+                    android:layout_marginTop="20dip"
+                     android:textAppearance="?android:attr/textAppearanceSmall"    
+                     android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                       android:text="Address:" />
+	    <EditText
+	         android:singleLine="true"
+            android:id="@+id/aal_editTextAddress"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5.0dip"
+            android:hint="@string/hint_address"
+            android:inputType="textPostalAddress" />
+	    <TextView
+	             
+	               android:id="@+id/textView1"
+	                android:layout_gravity="center_vertical"
+                  		android:textColor="@color/text_title"
+			android:textStyle="bold"
+                    android:layout_marginTop="20dip"
+                     android:textAppearance="?android:attr/textAppearanceSmall"    
+                     android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                       android:text="Category:" />
+	     <Spinner
+	           android:layout_marginTop="5.0dip"
+                android:id="@+id/aal_spnCategory"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+               />
+	     <TextView
+	             
+	               android:id="@+id/textView1"
+	                android:layout_gravity="center_vertical"
+                  		android:textColor="@color/text_title"
+			android:textStyle="bold"
+                    android:layout_marginTop="20dip"
+                     android:textAppearance="?android:attr/textAppearanceSmall"    
+                     android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                       android:text="Place:" />
+	    <Button 
+	              android:layout_marginTop="10.0dip"
+        
+	        android:id="@+id/aal_btnPickPlace"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:text="pick place"
+	        android:background="@drawable/apptheme_btn_default_holo_light"
+	        style="@android:style/TextAppearance.Medium"
+	        android:textColor="@color/btn_txt"
+	        />
+	    <TextView
+	           
+	           android:visibility="gone"
+	               android:id="@+id/aal_txtLat"
+	                android:layout_gravity="center_vertical"
+                  		android:textColor="@color/text_title"
+			    android:textStyle="bold"
+			    android:gravity="center_horizontal"
+                    android:layout_marginTop="2dip"
+                     android:textAppearance="?android:attr/textAppearanceSmall"    
+                     android:layout_width="fill_parent"
+                      android:layout_height="wrap_content"
+                       android:text="Phone:" />
+	    <TextView
+	               android:visibility="gone"
+	         
+	              android:id="@+id/aal_txtLng"
+	                 android:layout_gravity="center_vertical"
+                  		android:textColor="@color/text_title"
+			android:textStyle="bold"
+			  android:gravity="center_horizontal"
+                    android:layout_marginTop="2dip"
+                     android:textAppearance="?android:attr/textAppearanceSmall"    
+                     android:layout_width="fill_parent"
+                      android:layout_height="wrap_content"
+                       android:text="Phone:" />
+	       <TextView
+	             
+	               android:id="@+id/textView1"
+	                android:layout_gravity="center_vertical"
+                  		android:textColor="@color/text_title"
+			android:textStyle="bold"
+                    android:layout_marginTop="20dip"
+                     android:textAppearance="?android:attr/textAppearanceSmall"    
+                     android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                       android:text="Phone:" />
+	       <EditText
+	            android:singleLine="true"
+            android:id="@+id/aal_editTextPhone"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5.0dip"
+            android:hint="@string/hint_phone"
+           android:inputType="phone" />
+  <TextView
+	             
+	               android:id="@+id/textView1"
+	                android:layout_gravity="center_vertical"
+                  		android:textColor="@color/text_title"
+			android:textStyle="bold"
+                    android:layout_marginTop="20dip"
+                     android:textAppearance="?android:attr/textAppearanceSmall"    
+                     android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                       android:text="Type of Game:" />
+	        <Spinner
+	            android:layout_marginTop="5.0dip"
+                android:id="@+id/aal_spnGameType"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+               />
+	    
+	         <TextView
+	             
+	               android:id="@+id/textView1"
+	                android:layout_gravity="center_vertical"
+                  		android:textColor="@color/text_title"
+			android:textStyle="bold"
+                    android:layout_marginTop="20dip"
+                     android:textAppearance="?android:attr/textAppearanceSmall"    
+                     android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                       android:text="Date:" />
+	       <DatePicker
+	            android:layout_marginTop="5.0dip"
+               android:calendarViewShown="false"
+	           android:id="@+id/aal_datePicker"
+	           android:layout_width="fill_parent"
+	           android:layout_height="wrap_content" />
+  <TextView
+	             
+	               android:id="@+id/textView1"
+	                android:layout_gravity="center_vertical"
+                  		android:textColor="@color/text_title"
+			android:textStyle="bold"
+                    android:layout_marginTop="20dip"
+                     android:textAppearance="?android:attr/textAppearanceSmall"    
+                     android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                       android:text="Start Time:" />
+	       <TimePicker
+	             android:layout_marginTop="5.0dip"
+        
+	           android:id="@+id/aal_timePickersTime"
+	           android:layout_width="fill_parent"
+	           android:layout_height="wrap_content" />
+	         <TextView
+	             
+	               android:id="@+id/textView1"
+	                android:layout_gravity="center_vertical"
+                  		android:textColor="@color/text_title"
+			android:textStyle="bold"
+                    android:layout_marginTop="20dip"
+                     android:textAppearance="?android:attr/textAppearanceSmall"    
+                     android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                       android:text="End Time:" />
+	      <TimePicker
+	            android:layout_marginTop="5.0dip"
+               android:id="@+id/aal_timePickereTime"
+	           android:layout_width="fill_parent"
+	           android:layout_height="wrap_content" />
+	        <TextView
+	             
+	               android:id="@+id/textView1"
+	                android:layout_gravity="center_vertical"
+                  		android:textColor="@color/text_title"
+			android:textStyle="bold"
+                    android:layout_marginTop="20dip"
+                     android:textAppearance="?android:attr/textAppearanceSmall"    
+                     android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                       android:text="Description:" />
+	  <EditText
+	        android:id="@+id/aal_editTextDesc"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5.0dip"
+            android:hint="@string/hint_desc"
+            android:inputType="text" />
+	        <TextView
+	             
+	               android:id="@+id/textView1"
+	                android:layout_gravity="center_vertical"
+                  		android:textColor="@color/text_title"
+			android:textStyle="bold"
+                    android:layout_marginTop="20dip"
+                     android:textAppearance="?android:attr/textAppearanceSmall"    
+                     android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                       android:text="image:" />
+	    <Button 
+	            android:layout_marginTop="5.0dip"
+        
+	        android:id="@+id/aal_btnBrowse"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:text="@string/btn_browse"
+	        android:background="@drawable/apptheme_btn_default_holo_light"
+	        style="@android:style/TextAppearance.Medium"
+	        android:textColor="@color/btn_txt"
+	        />
+	    
+	    <ImageView
+	            android:layout_marginTop="10.0dip"
+        android:adjustViewBounds="true"
+	        android:visibility="gone"
+android:id="@+id/aal_img"
+android:layout_gravity="center" 
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+ />
+	      <Button 
+	              android:layout_marginTop="10.0dip"
+        
+	        android:id="@+id/aal_btnSubmit"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:text="@string/btn_submit"
+	        android:background="@drawable/apptheme_btn_default_holo_light"
+	        style="@android:style/TextAppearance.Medium"
+	        android:textColor="@color/btn_txt"
+	        />
+	</LinearLayout>
+	
+	
+</ScrollView>
+    
+
+
+
