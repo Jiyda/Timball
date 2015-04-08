@@ -58,7 +58,7 @@ public class ActivityAddLocation extends Activity  {
     String lat,lng="";
 	UserFunctions userFunctions;
 	private ImageView img;
-	private Spinner spnCategory,spnGameType;
+	private Spinner spnGameType;
 	private EditText edttxtName,edttxtAddress,edttxtPhone,edttxtDesc;
 	private ScrollView scrollview;
 	private TimePicker timepickerETime,timepickerSTime;
@@ -70,9 +70,7 @@ public class ActivityAddLocation extends Activity  {
 	 
 	    private String selectedImagePath;
 	    
-	    private ArrayAdapter<String> categoryAdapter;
-        String[] cat_val_text = { "Open","Full"};
-        String[] cat_val = {"C0001","C0002"};
+	    
         
         private ArrayAdapter<String> gametypeAdapter;
         String[] gametype_val_text = { "5 vs 5","7 vs 7","11 vs 11"};
@@ -97,7 +95,7 @@ public class ActivityAddLocation extends Activity  {
 		txtLat=(TextView) findViewById(R.id.aal_txtLat);
 		txtLng=(TextView) findViewById(R.id.aal_txtLng);
 		
-		spnCategory = (Spinner) findViewById(R.id.aal_spnCategory);
+		
 		spnGameType = (Spinner) findViewById(R.id.aal_spnGameType);
 		scrollview = (ScrollView) findViewById(R.id.aal_Scrollview);
 		
@@ -113,16 +111,14 @@ public class ActivityAddLocation extends Activity  {
 	    
 	    datepicker = (DatePicker) findViewById(R.id.aal_datePicker);
 	    
-		categoryAdapter = new ArrayAdapter<String>(ActivityAddLocation.this,
-				android.R.layout.simple_spinner_item, cat_val_text);
+		
 		
 		gametypeAdapter = new ArrayAdapter<String>(ActivityAddLocation.this,
 				android.R.layout.simple_spinner_item, gametype_val_text);
 		
-		categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		gametypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        spnCategory.setAdapter(categoryAdapter);
+       
 		spnGameType.setAdapter(gametypeAdapter);
 		
 		btnPickPlace.setOnClickListener(new OnClickListener() {
@@ -270,7 +266,9 @@ public class ActivityAddLocation extends Activity  {
 	    	return false;
 	    }
 	    private void getCategoryId(){
-	    		categoryid= ""+cat_val[spnCategory.getSelectedItemPosition()];
+	    	// set the category to Open when creating a game
+	    	// in the database the category Open has id C0001
+	    		categoryid= "C0001";
 	    }
 	    private void getGameType(){
 	    	gametype = spnGameType.getSelectedItem().toString();
