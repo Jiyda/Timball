@@ -27,7 +27,11 @@ import org.json.JSONObject;
 
 
 
+
+
+
 import com.cmu.timball.libraries.UserFunctions;
+import com.google.android.gms.internal.gd;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -99,7 +103,7 @@ public class ActivityLogin extends Activity  {
 
 	}
 
-	public class loginAsyncTask extends AsyncTask<String,Void,String> {
+	public class loginAsyncTask extends AsyncTask<String,Void,JSONObject> {
 
 		ProgressDialog pd;
 		@Override
@@ -114,37 +118,67 @@ public class ActivityLogin extends Activity  {
 
 
 		@Override
-		protected String doInBackground(String... params) {
+		protected JSONObject doInBackground(String... params) {
            	return userFunctions.login(email, pass);
         }
 
 		@Override
-		protected void onPostExecute(String response) {
-			
+		protected void onPostExecute(JSONObject response) {
+			String error="";
+			String image_url="";
+		
 			if(pd!=null){
 				pd.dismiss();
 			}
-			try{
-				
-				if(response!=null && Integer.parseInt(response)>0){
-					gda.savePreferences(gda.TAG_LOGIN, true, cntxt);  
-					gda.savePreferences(gda.TAG_EMAIL, email, cntxt);
-					gda.savePreferences(gda.TAG_LOCATION, "", cntxt);
-					gda.savePreferences(gda.TAG_GAME_TYPE, "", cntxt);
-				//	edtxtEmail.setText("");
-				//	edtxtpassword.setText("");
-					Intent i = new Intent(ActivityLogin.this, ActivityHome.class);
-					startActivity(i);
-					ActivityLogin.this.finish();
+//			if(response!=null ){
+//				gda.savePreferences(gda.TAG_LOGIN, true, cntxt);  
+//				gda.savePreferences(gda.TAG_EMAIL, email, cntxt);
+//				gda.savePreferences(gda.TAG_LOCATION, "", cntxt);
+//				gda.savePreferences(gda.TAG_GAME_TYPE, "", cntxt);
+//			//	edtxtEmail.setText("");
+//			//	edtxtpassword.setText("");
+//				Intent i = new Intent(ActivityLogin.this, ActivityHome.class);
+//				startActivity(i);
+//				ActivityLogin.this.finish();
+//			}
+//			else{
+//				Toast.makeText(getBaseContext(), "wrong email or password", Toast.LENGTH_SHORT).show();
+//			}
+			
+			
+			if(response!=null ){
+				try{
+					error = response.getString("error");
+					
+					if(error.equalsIgnoreCase("false")){
+					    image_url=response.getString("image_url");
+						gda.savePreferences(gda.TAG_LOGIN, true, cntxt);  
+						gda.savePreferences(gda.TAG_EMAIL, email, cntxt);
+						gda.savePreferences(gda.TAG_LOCATION, "", cntxt);
+						gda.savePreferences(gda.TAG_GAME_TYPE, "", cntxt);
+						gda.savePreferences(gda.TAG_USER_IMAGE_URL, image_url, cntxt);
+					//	edtxtEmail.setText("");
+					//	edtxtpassword.setText("");
+						Intent i = new Intent(ActivityLogin.this, ActivityHome.class);
+						startActivity(i);
+						ActivityLogin.this.finish();
+
+						
+					}
+					else{
+						Toast.makeText(getBaseContext(), "wrong email or password", Toast.LENGTH_SHORT).show();
+					}
+					
 				}
-				else{
-					Toast.makeText(getBaseContext(), "wrong email or password", Toast.LENGTH_SHORT).show();
+				catch(Exception e){
+					Toast.makeText(getBaseContext(), "something went wrong!", Toast.LENGTH_SHORT).show();
+					
 				}
+
 			}
-			catch(Exception e){
-				Toast.makeText(getBaseContext(), "something went wrong!", Toast.LENGTH_SHORT).show();
-				
-			}
+			
+			
+		
 
 			
 			

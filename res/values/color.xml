@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
+     <color name="sign_in_dark_gray">#1f1f1f</color>
+    <color name="sign_in_gray">#292929</color>
+    <color name="sign_up">#ff5f55</color>
+    <color name="sign_in_turquoise">#15c1cf</color>
+    <color name="sign_in_light_gray">#7d7d7d</color>
+      
+    <color name="sidemenu_background">#1b1b1b</color>
+    <color name="sidemenu_header">#090909</color>
+    <color name="sidemenu_divider">#242424</color>
+    
+    
+    
+     
+       <color name="blue">#37a7df</color>
+    
+    
     <color name="splash_background">#394263</color>
     <color name="title_app">#FFFFFF</color>
     <color name="menu_frame">#FFFFFF</color>

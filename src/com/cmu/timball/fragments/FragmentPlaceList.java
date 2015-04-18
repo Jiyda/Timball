@@ -9,9 +9,11 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,8 +29,12 @@ import com.cmu.timball.adapters.AdapterPlaceList;
 import com.cmu.timball.libraries.UserFunctions;
 import com.cmu.timball.loadmore.PagingListView;
 import com.cmu.timball.utils.Utils;
+import com.cmu.timball.Global_data;
 import com.cmu.timball.R;
 public class FragmentPlaceList extends Fragment implements OnClickListener {
+	
+	Global_data gda;
+	Context cntxt;
 	
 	// Create interface for MapsListFragment
 	private OnListSelectedListener mCallback;
@@ -59,6 +65,8 @@ public class FragmentPlaceList extends Fragment implements OnClickListener {
     
 	// Flag for loadmore
 	private int mCurrentPositon = 0;
+	
+	
 	
 	// Location_id, location_name, address, category_marker, location_image
 	// Create array variables to store data
@@ -94,6 +102,8 @@ public class FragmentPlaceList extends Fragment implements OnClickListener {
 		// Declare object of userFunctions and Utils class
 		userFunction = new UserFunctions();
 		utils = new Utils(getActivity());
+		gda = new Global_data();
+	
 				
 		View v = inflater.inflate(R.layout.fragment_home_list, container, false);
 		
@@ -285,6 +295,31 @@ public class FragmentPlaceList extends Fragment implements OnClickListener {
         }
     }
 	
+    
+    
+ // Method get reputation of user from server
+ 		public int getReputation(){
+ 			int mCountTotal = 0;
+ 	        try {
+ 	        	
+ 	        	json = userFunction.gamesJoined(gda.loadSavedPreferences_string(gda.TAG_EMAIL, cntxt), 1, 5);
+ 	        	 
+ 	            if(json != null){
+ 		             
+ 		            // Get Count_Total from server
+ 	            	mCountTotal = Integer.valueOf(json.getString(userFunction.key_total_data));
+ 	            	     }        
+ 	                               
+ 	        } catch (JSONException e) {
+ 	            // TODO Auto-generated catch block
+ 	        	Log.i("FragmentGamesJoined", "getDataFromServer: "+e);
+ 	        }
+ 	        return mCountTotal;
+ 	            
+ 	    }
+    
+    
+    
     // Method get data from server which loads the games to the app
 	public void getDataFromServer(){
 	       

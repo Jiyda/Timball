@@ -11,6 +11,7 @@ public class Global_data {
 	public static String TAG_LOGIN="login_status";
 	public static String TAG_LOCATION="u_location";
 	public static String TAG_GAME_TYPE="u_game_type";
+	public static String TAG_USER_IMAGE_URL="user_image_url";
 	
 	public void savePreferences(String key, boolean value, Context cntxt) {
 		SharedPreferences sp = cntxt.getSharedPreferences(LOGIN_PREFERENCES,cntxt.MODE_PRIVATE);

@@ -66,6 +66,7 @@
 	        style="@android:style/TextAppearance.Medium"
 	        android:textColor="@color/btn_txt"
 	        />
+	    
 	</LinearLayout>
 	
 	

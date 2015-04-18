@@ -16,5 +16,16 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
+ <style name="stysbtn">
+        <item name="android:background">@drawable/statesbtn</item>
+        
+    
 
+    </style> 
+     <style name="stysbtn2">
+        <item name="android:background">@drawable/statesbtn2</item>
+        
+    
+
+    </style> 
 </resources>

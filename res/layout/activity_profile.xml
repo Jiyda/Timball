@@ -6,16 +6,29 @@
 
     <LinearLayout android:orientation="vertical" android:id="@+id/main_layout" android:layout_width="match_parent" 
         android:layout_height="wrap_content" android:layout_marginTop="20dp"  android:padding="@dimen/padding_detail_info">
-    
+     <ImageView    
+        android:adjustViewBounds="true"
+	       android:src="@drawable/profile"
+android:id="@+id/ap_img"
+android:layout_gravity="center" 
+android:layout_width="fill_parent"
+android:layout_height="200dip"
+ />
         
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" 
             android:layout_marginBottom="10dp">
              <TextView android:id="@+id/lbl_email_id1" android:layout_width="0dp" android:layout_height="wrap_content"
-		        android:text="" android:layout_gravity="center_horizontal" android:layout_weight=".35"/>
+		        android:text="Email:" android:layout_gravity="center_horizontal" android:layout_weight=".35"/>
              <TextView android:id="@+id/cl1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=""/>
             <TextView android:id="@+id/lbl_email_id" android:layout_width="0dp" android:layout_height="wrap_content"
 		        android:text="" android:layout_gravity="center_horizontal" android:layout_weight=".65"/>
-        </LinearLayout>
+           	<TextView android:id="@+id/lbl_rep" android:layout_width="0dp" android:layout_height="wrap_content"
+		        android:text="Reputation:" android:layout_gravity="center_horizontal" android:layout_weight=".65"/>
+    		<TextView android:id="@+id/rep" android:layout_width="0dp" android:layout_height="wrap_content"
+		        android:text="" android:layout_gravity="center_horizontal" android:layout_weight=".65"/>
+    
+            
+            </LinearLayout>
         
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" 
             android:layout_marginBottom="10dp">

@@ -15,8 +15,7 @@
 	        android:layout_width="match_parent"
 	        android:layout_height="match_parent"
 	        android:orientation="vertical"
-	        android:visibility="gone"
-			android:layout_alignParentTop="true">
+	     	android:layout_alignParentTop="true">
 		    <LinearLayout
 		        android:id="@+id/lytMedia"
 		        android:layout_width="match_parent"
@@ -70,6 +69,15 @@
 						android:textColor="@color/text_sub_title"
 						android:layout_marginLeft="@dimen/padding_detail_info"
 						style="@android:style/TextAppearance.Medium"
+						android:layout_marginRight="@dimen/margin_menu_main"/>
+				     <TextView
+				        android:id="@+id/lblCreatedBy"
+						android:layout_width="fill_parent"
+						android:gravity="right"
+						android:layout_height="wrap_content"
+						android:textColor="@color/text_sub_title"
+						android:layout_marginLeft="@dimen/padding_detail_info"
+						style="@android:style/TextAppearance.Small"
 						android:layout_marginRight="@dimen/margin_menu_main"/>
 				    
 				    <ImageView 
@@ -229,10 +237,17 @@
 				            android:layout_marginTop="@dimen/margin_share" android:background="@drawable/apptheme_btn_default_holo_light"
 					        android:textColor="@color/btn_txt" style="@android:style/TextAppearance.Medium" 
 					        android:layout_gravity="center_horizontal" android:text="Join Game"/>
-				         <Button android:id="@+id/btn_leave_game" android:layout_width="match_parent" android:layout_height="wrap_content" 
+				      
+				        <Button android:id="@+id/btn_leave_game" android:layout_width="match_parent" android:layout_height="wrap_content" 
 				            android:layout_marginTop="@dimen/margin_share" android:background="@drawable/apptheme_btn_default_holo_light"
 					        android:textColor="@color/btn_txt" style="@android:style/TextAppearance.Medium" 
 					        android:layout_gravity="center_horizontal" android:text="Leave Game"/>
+				         
+				         <Button android:id="@+id/btn_list_players" android:layout_width="match_parent" android:layout_height="wrap_content" 
+				            android:layout_marginTop="@dimen/margin_share" android:background="@drawable/apptheme_btn_default_holo_light"
+					        android:textColor="@color/btn_txt" style="@android:style/TextAppearance.Medium" 
+					        android:layout_gravity="center_horizontal" android:text="List of Players who Joined"/>
+				
 				    </LinearLayout>	        
 				</LinearLayout>
 				</LinearLayout>

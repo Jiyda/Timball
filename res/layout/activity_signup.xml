@@ -51,7 +51,27 @@
              android:layout_marginLeft="30dip"
             android:hint="@string/hint_password"
             android:inputType="textPassword" />
-     
+       <Button 
+	            android:layout_marginTop="5.0dip"
+        
+	        android:id="@+id/as_btnBrowse"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:text="@string/btn_browse"
+	        android:background="@drawable/apptheme_btn_default_holo_light"
+	        style="@android:style/TextAppearance.Medium"
+	        android:textColor="@color/btn_txt"
+	        />
+	    
+	    <ImageView
+	            android:layout_marginTop="10.0dip"
+        android:adjustViewBounds="true"
+	        android:visibility="gone"
+android:id="@+id/as_img"
+android:layout_gravity="center" 
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+ />
 	    
 	    <Button 
 	        android:id="@+id/as_btnSignup"

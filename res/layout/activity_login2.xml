@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   
+    android:background="@color/sign_in_gray"
+    >
+
+  <LinearLayout 
+       android:id="@+id/al2_llmsg"
+       android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   android:orientation="vertical"
+   android:visibility="invisible"
+   android:background="#c0372e"
+   android:layout_above="@+id/rlSignInForm"
+   android:layout_margin="20dip"
+   
+      >
+
+      <TextView
+          android:id="@+id/al2_txtmsg"
+          android:layout_margin="10dip"
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent"
+          android:gravity="center"
+          android:textColor="#FFFFFF"
+          android:textAppearance="?android:attr/textAppearanceSmall" />
+      
+  </LinearLayout>
+  
+  
+    <RelativeLayout
+        android:id="@+id/rlSignInForm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+      android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+         >
+
+      
+        <LinearLayout
+            android:id="@+id/llSignUpBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:background="@color/sign_in_dark_gray"
+            android:orientation="vertical"
+            android:visibility="visible"
+            android:weightSum="3" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1" >
+
+       
+                <EditText
+                    
+                   android:id="@+id/al_editTextEmailUse"
+                     android:hint="@string/hint_email"
+            android:inputType="textEmailAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                   android:background="@null"
+                    android:gravity="bottom"
+                    
+                         android:textColorHint="#FFFFFF"
+                    android:singleLine="true"
+                    android:textColor="#3dacac"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/sign_in_gray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1" >
+
+           
+                <EditText
+                    android:id="@+id/al_editTextPassUse"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@null"
+                    android:gravity="bottom"
+                          android:textColorHint="#FFFFFF"
+                   android:hint="@string/hint_password"
+            android:inputType="textPassword"
+                    android:textColor="#3dacac"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+            
+           
+        </LinearLayout>
+     
+       
+      
+    </RelativeLayout>
+
+    <Button
+          android:id="@+id/al_btnLogin"
+         android:textSize="20dip"
+        style="@style/stysbtn"
+        android:layout_width="fill_parent"
+ android:layout_marginTop="3dip"
+        android:layout_height="40dip"
+        android:layout_marginLeft="20dip"
+         android:textColor="@android:color/white"
+        android:layout_marginRight="20dip"
+        android:layout_below="@+id/rlSignInForm"
+        android:text="Sign in" />
+
+   
+
+</RelativeLayout>

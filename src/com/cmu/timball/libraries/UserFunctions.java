@@ -1,11 +1,6 @@
 /**
     * File        : UserFuntions.java
-    * App name    : Perkutut
-    * Version     : 1.2.0
-    * Created     : 24/11/14
-
-    * Created by Taufan Erfiyanto & Cahaya Pangripta Alam on 11/24/13.
-    * Copyright (c) 2013 pongodev. All rights reserved.
+   
     */
 
 package com.cmu.timball.libraries;
@@ -52,10 +47,14 @@ public class UserFunctions {
 	
 	private final String service_login	  	  	  = "login.php?";
 	private final String service_signup  	  	  = "signup.php?";
+	
 	private final String service_join_game  	  = "api_join_game.php?";
+	private final String service_join_game2  	  = "api_join_game2.php?";
 	private final String service_get_game  	  = "get_user_game.php?";
 	private final String service_get_location  	  = "get_user_location.php?";
 	private final String service_location_upload  = "location_upload.php";
+	private final String service_signup2  	  	  = "signup2.php?";
+	
 	
 	
 	// Param
@@ -99,6 +98,8 @@ public class UserFunctions {
 	public final String key_e_time		= "etime";
 	public final String key_categ_name		= "category_name";
 	public final String key_tot_players		= "tot_players";
+	public final String key_created_by		= "created_by";
+	public final String key_joined_by	= "joined_by";
 	
 	// Array
 	public final String array_latest_place 	   = "latestPlace";
@@ -179,10 +180,10 @@ public class UserFunctions {
 		return json;
 	}
 	
-	public String login(String email, String password){
+	public JSONObject  login(String email, String password){
 		webService = URLWS+service_login+param_email+email+"&"+param_password+password;
-		String res = jsonParser.getStringFromUrl(webService);
-		return res;
+		JSONObject jObject = jsonParser.getJSONFromUrl(webService);
+		return jObject;
 	}
 	
 	public String signup(String email,String username, String password){
@@ -213,6 +214,17 @@ public class UserFunctions {
 		return res;
 	}
 	
+	public String leavegame2(String email,String game_type, String players, String location_id, String loc_name){
+		try {
+			game_type = URLEncoder.encode(game_type, "utf-8");
+			loc_name = URLEncoder.encode(loc_name, "utf-8");
+		} catch (UnsupportedEncodingException e1) { e1.printStackTrace(); }
+		webService = URLWS+service_join_game2+param_email+email+"&"+param_game_type+game_type+"&"+param_players+players+"&"+param_location_id+location_id+"&"+param_loc_name+loc_name;
+		//Toast.makeText(cntxt.getApplicationContext(), webService, Toast.LENGTH_LONG).show();
+		String res = jsonParser.getStringFromUrl(webService);
+		return res;
+	}
+	
 	public String getgame(String email){
 		webService = URLWS+service_get_game+param_email+email;
 		//Toast.makeText(cntxt.getApplicationContext(), webService, Toast.LENGTH_LONG).show();
@@ -229,6 +241,15 @@ public class UserFunctions {
 	public JSONObject postLocationData(MultipartEntity ent){	
 
 		webService = URLWS+service_location_upload;
+		JSONObject jObject = jsonParser.postData(ent, webService);
+		return jObject;
+
+
+	}
+	
+	public JSONObject postSignup(MultipartEntity ent){	
+
+		webService = URLWS+service_signup2;
 		JSONObject jObject = jsonParser.postData(ent, webService);
 		return jObject;
 

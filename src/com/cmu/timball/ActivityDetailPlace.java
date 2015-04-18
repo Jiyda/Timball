@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -73,6 +74,8 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 	private String mAddress;
 	private String mPhone;
 	private String mWebsite;
+	private String mCreatedBy;
+	private String mJoinedBy;
 	private String mDesc;
 	private String mIcMarkerLocation;
 	private String mImgLocation;
@@ -83,10 +86,10 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 	private String mdate, mstime, metime, mgame_type, mcateg_name;
 	
 	// Declare view objects
-	private TextView lblPlaceName, lblAddress, lblPhone, lblWebsite, lblNoResult, lblAlert, lbldate, lblstime, lbletime, lbl_players;
+	private TextView lblPlaceName, lblAddress, lblPhone, lblWebsite, lblNoResult, lblAlert, lbldate, lblstime, lbletime, lbl_players,lbl_createdby;
 	private ImageView imgThumbnail;
 	private LinearLayout lytMedia, lytRetry, lytDetail;
-	private Button btnRetry, btn_join_game, btn_leave_game;
+	private Button btnRetry, btn_join_game, btn_leave_game,btn_player_list;
 	private ImageButton imgBtnShare, imgBtnDirection;
 //	private Spinner sp_no_players;
 	// Declare object to handle map
@@ -129,6 +132,7 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 		lblPlaceName	= (TextView) findViewById(R.id.lblPlaceName);
 		lblAddress		= (TextView) findViewById(R.id.lblAddress);
 		lblPhone		= (TextView) findViewById(R.id.lblPhone);
+		lbl_createdby	= (TextView) findViewById(R.id.lblCreatedBy);
 		lblWebsite		= (TextView) findViewById(R.id.lblWebsite);
 		lytMedia		= (LinearLayout) findViewById(R.id.lytMedia);
 		lytRetry		= (LinearLayout) findViewById(R.id.lytRetry);
@@ -150,6 +154,7 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 		
 		btn_join_game = (Button) findViewById(R.id.btn_join_game); 
 		btn_leave_game = (Button) findViewById(R.id.btn_leave_game);
+		btn_player_list = (Button) findViewById(R.id.btn_list_players);
 	//	sp_no_players = (Spinner) findViewById(R.id.sp_no_players);
 	//	sp_no_players.setSelection(0);
 		
@@ -210,6 +215,23 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 			public void onClick(View v) {
 			
 				new LeavegameAsyncTask().execute("");
+			}
+		});
+ 		
+ 		btn_player_list.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				
+				Intent i = new Intent(ActivityDetailPlace.this, ActivityPlayerList.class);
+				 i.putExtra("list", mJoinedBy);
+				 i.putExtra("email",mCreatedBy);
+				 i.putExtra("loc_id",mGetLocationId);
+				 i.putExtra("game_type",mgame_type);
+				 i.putExtra("dec_players", dec_players);
+				 startActivity(i); 
+				 finish();
+				 
 			}
 		});
  		
@@ -351,7 +373,7 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 				}
 				
 				if (game_string == ""){
-					game_string = "None";
+					game_string = "";
 				}
 				//remove trailing comma
 				game_string = game_string.replaceAll(",$", "");
@@ -436,6 +458,7 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 				lytDetail.setVisibility(View.VISIBLE);
 				lytRetry.setVisibility(View.GONE);
 				lblPlaceName.setText(mLocationName);
+				lbl_createdby.setText("created by "+mCreatedBy);
 				lblAddress.setText(mAddress);
 				lblPhone.setText(mPhone);
 				lblWebsite.setText(mgame_type);
@@ -443,6 +466,15 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 				lbldate.setText(mdate);
 				lblstime.setText(mstime);
 				lbletime.setText(metime);
+				
+//				String[] listarray= mJoinedBy.split(",");
+//				List<String> list = new ArrayList<String>(Arrays.asList(listarray));
+//				if(list.contains(gda.loadSavedPreferences_string(gda.TAG_EMAIL, cntxt))){
+//					btn_join_game.setVisibility(View.GONE);
+//					btn_leave_game.setVisibility(View.VISIBLE);
+//
+//				}
+//				
 				
 				if(mcateg_name.equalsIgnoreCase("open")){
 					btn_join_game.setVisibility(View.VISIBLE);
@@ -620,6 +652,8 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 	            JSONObject locationObject 	= dataLocationArray.getJSONObject(0);
 	            System.out.println("dataLocationArray = " + dataLocationArray);
 	            
+	           
+	            
 	            // Store Data to Variables
 	            mLocationName 	 = locationObject.getString(userFunction.key_location_name);
 	            mAddress 		 = locationObject.getString(userFunction.key_location_address);
@@ -635,6 +669,9 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 				mstime 			 = locationObject.getString(userFunction.key_s_time);
 				metime			 = locationObject.getString(userFunction.key_e_time);
 				mcateg_name		 = locationObject.getString(userFunction.key_categ_name);
+				mCreatedBy 			 = locationObject.getString(userFunction.key_created_by);
+				mJoinedBy			 = locationObject.getString(userFunction.key_joined_by);
+				
 				dec_players		 = Integer.parseInt(locationObject.getString(userFunction.key_tot_players));
             }      
             

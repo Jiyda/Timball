@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+  <ImageView
+        android:id="@+id/welcomestatic"
+        android:scaleType="centerCrop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/welcomestatic" />
+ <ImageView
+        android:id="@+id/gif"
+        android:scaleType="centerCrop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/welcomestatic" />
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="10dip"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/aw_btnSignup"
+            style="@style/stysbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dip"
+            android:layout_margin="5dip"
+            android:layout_weight="1"
+            android:text="JOIN TIMBALL"
+            android:textColor="@android:color/white"
+            android:textSize="20dip" />
+
+        <Button
+            android:id="@+id/aw_btnSignin"
+            style="@style/stysbtn2"
+            android:layout_width="wrap_content"
+            android:layout_height="40dip"
+            android:layout_margin="5dip"
+            android:layout_weight="0.6"
+            android:text="SIGN IN"
+            android:textColor="@android:color/white"
+            android:textSize="20dip" />
+    </LinearLayout>
+
+   
+
+</RelativeLayout>

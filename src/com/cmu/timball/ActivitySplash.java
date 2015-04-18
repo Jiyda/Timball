@@ -66,15 +66,21 @@ public class ActivitySplash extends Activity {
 			// When progressbar finish call HomeActivity class
 	//		Intent i = new Intent(ActivitySplash.this, ActivityHome.class);
 			
-			if(gda.loadSavedPreferences(gda.TAG_LOGIN, cntxt)){
-				Intent i = new Intent(ActivitySplash.this, ActivityHome.class);
-				startActivity(i);
-				System.out.println("if");
-			}else{
-				Intent i = new Intent(ActivitySplash.this, ActivityLogin.class);
+//			if(gda.loadSavedPreferences(gda.TAG_LOGIN, cntxt)){
+//				Intent i = new Intent(ActivitySplash.this, ActivityHome.class);
+//				startActivity(i);
+//				System.out.println("if");
+//			}else{
+//				Intent i = new Intent(ActivitySplash.this, ActivityLogin.class);
+//				startActivity(i);
+//				System.out.println("else");
+//			}
+			
+			
+				Intent i = new Intent(ActivitySplash.this, ActivityWelcome.class);
 				startActivity(i);
 				System.out.println("else");
-			}
+			
 			
 			ActivitySplash.this.finish();
 			

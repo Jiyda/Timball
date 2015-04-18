@@ -65,7 +65,7 @@ public class ActivityAddLocation extends Activity  {
 	private DatePicker datepicker;
 	private ActionBar actionbar;
 	private TextView txtLat,txtLng;
-	
+	Global_data gda;
 	 private static final int SELECT_PICTURE = 1;
 	 
 	    private String selectedImagePath;
@@ -88,6 +88,8 @@ public class ActivityAddLocation extends Activity  {
      	actionbar.setDisplayHomeAsUpEnabled(true);
      	
 		userFunctions= new UserFunctions();
+		gda = new Global_data();
+		
 		
 		img = (ImageView) findViewById(R.id.aal_img);
 		btnBrowse = (Button) findViewById(R.id.aal_btnBrowse);
@@ -150,7 +152,7 @@ public class ActivityAddLocation extends Activity  {
 		btnSubmit.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-			
+				
 				if(validateTextFields()){
 
 					if(validateLatLng()){
@@ -182,7 +184,7 @@ public class ActivityAddLocation extends Activity  {
 				else{
 					Toast.makeText(ActivityAddLocation.this,"please fill all fields", Toast.LENGTH_LONG).show();
 				}
-
+//
 			}
 		});
 	
@@ -336,6 +338,7 @@ public class ActivityAddLocation extends Activity  {
 					ent.addPart("stime",new StringBody(stime));
 					ent.addPart("etime",new StringBody(etime));
 					ent.addPart("tot_players",new StringBody("0"));
+					ent.addPart("email",new StringBody(gda.loadSavedPreferences_string(gda.TAG_EMAIL,ActivityAddLocation.this)));
 					ent.addPart("description",new StringBody(desc));
 					ent.addPart("placename",new StringBody(""));
 					return userFunctions.postLocationData(ent);
@@ -343,6 +346,9 @@ public class ActivityAddLocation extends Activity  {
 
 					e.printStackTrace();
 				}
+				
+				
+			
 				return null;
 	        }
 			
