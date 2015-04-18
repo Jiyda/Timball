@@ -21,7 +21,7 @@ public class ActivityProfile extends ActionBarActivity {
 	
 	public final static String EXTRA_EMAIL = "email";
 	private ActionBar actionbar;
-	TextView lbl_email_id1,lbl_game_type1,lbl_location1,lbl_email_id,lbl_game_type,lbl_location, cl1,cl2,cl3;
+	TextView lbl_email_id;
 	Button btn_logout;
 	Global_data gda;
 	Context cntxt;
@@ -42,23 +42,13 @@ public class ActivityProfile extends ActionBarActivity {
 		cntxt = this;
 		userFunction = new UserFunctions();
 		
-		lbl_email_id1 = (TextView) findViewById(R.id.lbl_email_id1);
-     	lbl_game_type1 = (TextView) findViewById(R.id.lbl_game_type1);
-     	lbl_location1 = (TextView) findViewById(R.id.lbl_location1);
+	
+     	
      	
      	lbl_email_id = (TextView) findViewById(R.id.lbl_email_id);
-     	lbl_game_type = (TextView) findViewById(R.id.lbl_game_type);
-     	lbl_location = (TextView) findViewById(R.id.lbl_location);
-     	
-     	cl1  = (TextView) findViewById(R.id.cl1);
-     	cl2  = (TextView) findViewById(R.id.cl2);
-     	cl3  = (TextView) findViewById(R.id.cl3);
      	
      	btn_logout = (Button) findViewById(R.id.btn_logout);
-     	
-     	
-     	lbl_email_id1.setText("Email Address");
-     	cl1.setText(": ");
+   
      	lbl_email_id.setText(gda.loadSavedPreferences_string(gda.TAG_EMAIL, cntxt));
      	
      	
@@ -71,7 +61,7 @@ public class ActivityProfile extends ActionBarActivity {
 				gda.removePreferences(gda.TAG_GAME_TYPE, cntxt);
 				gda.removePreferences(gda.TAG_LOCATION, cntxt);
 				
-				Intent i = new Intent(ActivityProfile.this, ActivityLogin.class);
+				Intent i = new Intent(ActivityProfile.this, ActivityLogin2.class);
 				startActivity(i);
 				ActivityProfile.this.finish();
 			}
@@ -113,6 +103,16 @@ super.onBackPressed();
 	    Intent intent = new Intent(this, ActivityGamesJoined.class);
 	    intent.putExtra(EXTRA_EMAIL, gda.loadSavedPreferences_string(gda.TAG_EMAIL, cntxt));
 	    startActivity(intent);
+	}
+	
+	public void report_user(View view) {
+		Intent intent = new Intent(Intent.ACTION_SEND);
+		intent.setType("plain/text");
+		intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "jiyda@cmu.edu" });
+		intent.putExtra(Intent.EXTRA_SUBJECT, "Report user " +  gda.loadSavedPreferences_string(gda.TAG_EMAIL, cntxt));
+		intent.putExtra(Intent.EXTRA_TEXT, "I would like to report the User with the email address " + gda.loadSavedPreferences_string(gda.TAG_EMAIL, cntxt) + " because he/she [Please include the reason why you are reporting this user.]");
+		startActivity(Intent.createChooser(intent, ""));
+	
 	}
 
 

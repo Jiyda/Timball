@@ -1,11 +1,6 @@
 /**
     * File        : ActivityAbout.java
-    * App name    : Perkutut
-    * Version     : 1.2.0
-    * Created     : 24/11/14
-
-    * Created by Taufan Erfiyanto & Cahaya Pangripta Alam on 11/24/13.
-    * Copyright (c) 2013 pongodev. All rights reserved.
+    
     */
 
 package com.cmu.timball;

@@ -35,6 +35,10 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+<uses-permission android:name="android.permission.INTERNET" />
 
     <!-- change com.cmu.timball with your own package name -->
     <permission
@@ -54,7 +58,8 @@
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:logo="@drawable/logo"
-        android:theme="@style/Theme.Apptheme" >
+        android:theme="@style/Theme.Apptheme"
+        android:name="Timball" >
 
         <!-- Admob -->
         <meta-data
@@ -152,8 +157,18 @@
         <activity
         android:name=".ActivityGamesJoined"
         android:label="@string/page_games_joined" />
+        <activity android:name="com.instabug.library.activity.InstabugAnnotationActivity"
+  android:windowSoftInputMode="adjustPan" />
+        <activity android:name="com.instabug.library.InstabugFeedbackActivity"
+  android:windowSoftInputMode="adjustPan" />
         
-        
+<service android:name="com.instabug.library.network.UploadCacheService"/>
+<receiver android:name="com.instabug.library.network.InstabugNetworkReceiver">
+  <intent-filter>
+            <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+  </intent-filter>
+</receiver>
+ 
         
         
         <activity
