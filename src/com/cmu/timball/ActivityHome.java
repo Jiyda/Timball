@@ -178,7 +178,7 @@ public class ActivityHome extends ActionBarActivity implements
              break;
              
 		case 1:
-			// Call ActivitySetting
+			// Call ActivityAddLocation
 						i = new Intent(this, ActivityAddLocation.class);
 						startActivity(i);
 						
@@ -186,8 +186,8 @@ public class ActivityHome extends ActionBarActivity implements
 						overridePendingTransition (R.anim.open_next, R.anim.close_main);
 						break;	
 		case 2:
-			// Call ActivityCategory
-						i = new Intent(this, ActivityCategory.class);
+			// Call ActivityProfile
+						i = new Intent(this, ActivityProfile.class);
 						startActivity(i);
 						
 						// Show transition when menu selected
@@ -195,8 +195,8 @@ public class ActivityHome extends ActionBarActivity implements
 						break;
 			
 		case 3:
-			// Call ActivitySetting
-			i = new Intent(this, ActivitySetting.class);
+			// Call ActivityCategory
+			i = new Intent(this, ActivityCategory.class);
 			startActivity(i);
 			
 			// Show transition when menu selected
@@ -205,7 +205,7 @@ public class ActivityHome extends ActionBarActivity implements
 			
 		case 4:
 			// Call ActivitySetting
-			i = new Intent(this, ActivityProfile.class);
+			i = new Intent(this, ActivitySetting.class);
 			startActivity(i);
 						
 			// Show transition when menu selected

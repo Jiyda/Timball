@@ -22,7 +22,7 @@ public class ActivityProfile extends ActionBarActivity {
 	
 	public final static String EXTRA_EMAIL = "email";
 	private ActionBar actionbar;
-	TextView lbl_email_id;
+	TextView lbl_email_id, lbl_username;
 	BootstrapButton btn_logout;
 	Global_data gda;
 	Context cntxt;
@@ -47,10 +47,16 @@ public class ActivityProfile extends ActionBarActivity {
      	
      	
      	lbl_email_id = (TextView) findViewById(R.id.lbl_email_id);
+     	lbl_username = (TextView) findViewById(R.id.lbl_username);
      	
      	btn_logout = (BootstrapButton) findViewById(R.id.btn_logout);
-   
-     	lbl_email_id.setText(gda.loadSavedPreferences_string(gda.TAG_EMAIL, cntxt));
+     	String email = gda.loadSavedPreferences_string(gda.TAG_EMAIL, cntxt);
+     	lbl_email_id.setText("Email: "+ email);
+     	if (email.indexOf('@')!=-1){
+     			lbl_username.setText("@"+email.substring(0,email.indexOf('@')));
+     	}else{
+     		lbl_username.setText("@"+email);
+     	}
      	
      	
      	btn_logout.setOnClickListener(new OnClickListener() {

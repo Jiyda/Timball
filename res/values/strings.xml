@@ -63,9 +63,9 @@
     <string-array name="menu_list">
         <item>Latest Games</item>
         <item>Create Game</item>
+        <item>Profile</item>
         <item>Categories</item>
         <item>Setting</item>
-        <item>Profile</item>
         <item>About</item>
     </string-array>
 

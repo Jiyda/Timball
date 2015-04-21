@@ -125,7 +125,10 @@
     <string name="no_internet_connection">No connection</string>
     <string name="getting_marker">Getting marker&#8230;</string>
     <string name="share_via">Share Via</string>
-    <string name="app_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis condimentum tristique imperdiet. Curabitur vehicula magna turpis, eu facilisis metus bibendum at. Fusce elit ligula, varius sit amet lorem id, accumsan aliquet ante.</string>
+    <string name="app_description">
+        
+        A location-based football pick-ups app in Doha. Discover, join and play pick-up games instantly with the power of your smartphone.
+    </string>
     <string name="direction">Direction</string>
     <string name="direction_alert">Improve the accuracy of your location by turning on GPS.</string>
     <string name="no_route">Unable to get route</string>

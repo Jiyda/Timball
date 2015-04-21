@@ -61,8 +61,8 @@ public class FragmentNavigationDrawer extends Fragment {
 	// Icon in sliding menu (drawer)
 	public static String[] listMenu;
 	public static int[] imageMenu= new int[]{
-		R.drawable.ic_latest,  R.drawable.ic_action_new, R.drawable.ic_collection, 
-		R.drawable.ic_settings, R.drawable.ic_user, R.drawable.ic_about
+		R.drawable.ic_latest,  R.drawable.ic_action_new, R.drawable.ic_user,
+		R.drawable.ic_collection, R.drawable.ic_settings,  R.drawable.ic_about
 	};
 
 	@Override

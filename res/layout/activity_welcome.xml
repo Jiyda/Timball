@@ -56,6 +56,13 @@
             android:textSize="20dip" />
     </LinearLayout>
 
-   
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="110dp"
+        android:src="@drawable/logomotto" />
 
 </RelativeLayout>
