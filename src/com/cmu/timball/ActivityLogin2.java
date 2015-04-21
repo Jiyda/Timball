@@ -34,6 +34,7 @@ import org.json.JSONObject;
 
 
 
+
 import com.cmu.timball.libraries.UserFunctions;
 import com.google.android.gms.internal.gd;
 import com.google.android.gms.internal.ll;
@@ -199,11 +200,13 @@ public class ActivityLogin2 extends Activity  {
 	
 	@Override
 	public void onBackPressed() {
-		Intent homeIntent = new Intent(Intent.ACTION_MAIN);
-		homeIntent.addCategory( Intent.CATEGORY_HOME );
-		homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		startActivity(homeIntent);
-		finish();
+
+		Intent i = new Intent(ActivityLogin2.this, ActivityWelcome.class);
+		 startActivity(i); 
+		 finish();
+	     overridePendingTransition (R.anim.open_main, R.anim.close_next);
+
+	
 	}
  
 }

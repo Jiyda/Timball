@@ -40,6 +40,7 @@ import org.json.JSONObject;
 
 
 
+
 import com.cmu.timball.libraries.UserFunctions;
 import com.google.android.gms.internal.im;
 import com.koushikdutta.ion.Ion;
@@ -320,12 +321,13 @@ public class ActivitySignUp2 extends Activity {
 	// Listener when back button pressed
 		@Override
 		public void onBackPressed() {
-			// TODO Auto-generated method stub
-			super.onBackPressed();
-			
-			// Show transition when back button pressed
-			overridePendingTransition (R.anim.open_main, R.anim.close_next);
-			
+
+			Intent i = new Intent(ActivitySignUp2.this, ActivityWelcome.class);
+			 startActivity(i); 
+			 finish();
+		     overridePendingTransition (R.anim.open_main, R.anim.close_next);
+
+		
 		}
 
 }

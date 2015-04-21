@@ -69,8 +69,8 @@ public class AdapterPlayerList extends BaseAdapter {
 	        
 			holder.lblPlayer = (TextView) convertView.findViewById(R.id.txtPlayerName);
 			holder.icMarker 	   = (ImageView) convertView.findViewById(R.id.ic_img);
-			
-			holder.lblPlayer.setText(list.get(position));
+			String str = list.get(position);
+			holder.lblPlayer.setText(str.substring(0,str.indexOf('@')));
 			if(showX){
 				holder.icMarker.setVisibility(View.VISIBLE);;
 					

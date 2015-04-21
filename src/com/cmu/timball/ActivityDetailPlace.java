@@ -46,6 +46,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.cmu.timball.ads.Ads;
 import com.cmu.timball.libraries.UserFunctions;
 import com.cmu.timball.utils.Utils;
@@ -89,7 +90,9 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 	private TextView lblPlaceName, lblAddress, lblPhone, lblWebsite, lblNoResult, lblAlert, lbldate, lblstime, lbletime, lbl_players,lbl_createdby;
 	private ImageView imgThumbnail;
 	private LinearLayout lytMedia, lytRetry, lytDetail;
-	private Button btnRetry, btn_join_game, btn_leave_game,btn_player_list;
+	private Button btnRetry;
+	private BootstrapButton  btn_join_game, btn_leave_game, btn_player_list;
+	
 	private ImageButton imgBtnShare, imgBtnDirection;
 //	private Spinner sp_no_players;
 	// Declare object to handle map
@@ -152,9 +155,11 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 		lbletime	= (TextView) findViewById(R.id.lbletime);
 		lbl_players = (TextView) findViewById(R.id.lbl_players);
 		
-		btn_join_game = (Button) findViewById(R.id.btn_join_game); 
-		btn_leave_game = (Button) findViewById(R.id.btn_leave_game);
-		btn_player_list = (Button) findViewById(R.id.btn_list_players);
+		btn_join_game = (BootstrapButton)findViewById(R.id.btn_join_game); 
+		btn_leave_game =  (BootstrapButton)findViewById(R.id.btn_leave_game);
+		
+		btn_player_list = (BootstrapButton) findViewById(R.id.btn_list_players);
+		
 	//	sp_no_players = (Spinner) findViewById(R.id.sp_no_players);
 	//	sp_no_players.setSelection(0);
 		
@@ -198,7 +203,11 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
  	    		lblAlert.setText(R.string.no_connection);
  			}
  		}
-     	     
+ 	//	System.out.println(mcateg_name);
+ 		
+ 		
+ 	
+ 		
 		// Joining a Game button 
  		
  		btn_join_game.setOnClickListener(new OnClickListener() {
@@ -298,7 +307,13 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 					gda.savePreferences(gda.TAG_GAME_TYPE, game_string, cntxt);
 					Toast.makeText(getBaseContext(), "Game Joined", Toast.LENGTH_SHORT).show();
 				//	Toast.makeText(getBaseContext(), dec_players + " Players Needed Now ", Toast.LENGTH_SHORT).show();
-					lbl_players.setText(dec_players+" Players Needed");
+					
+					if(mcateg_name.equalsIgnoreCase("Players Needed") ){
+						lbl_players.setText(dec_players+" Players Needed");
+						}else{
+							lbl_players.setText("You are Attending!");
+						}
+					
 					btn_join_game.setVisibility(View.GONE);
 					btn_leave_game.setVisibility(View.VISIBLE);
 					
@@ -307,6 +322,8 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 					//	btn_join_game.setEnabled(false);
 						btn_join_game.setVisibility(View.GONE);
 					}
+					
+					
 					
 						
 						
@@ -401,7 +418,13 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 					gda.savePreferences(gda.TAG_GAME_TYPE, game_string, cntxt);
 					Toast.makeText(getBaseContext(), "Left Game", Toast.LENGTH_SHORT).show();
 				//	Toast.makeText(getBaseContext(), dec_players + " Players Needed Now ", Toast.LENGTH_SHORT).show();
-					lbl_players.setText(dec_players+" Players Needed");
+					
+					if(mcateg_name.equalsIgnoreCase("Players Needed") ){
+						lbl_players.setText(dec_players+" Players Needed");
+						}else{
+							lbl_players.setText("");
+						}
+				
 					btn_leave_game.setVisibility(View.GONE);
 					btn_join_game.setVisibility(View.VISIBLE);
 					
@@ -458,6 +481,21 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 				lytDetail.setVisibility(View.VISIBLE);
 				lytRetry.setVisibility(View.GONE);
 				lblPlaceName.setText(mLocationName);
+				
+				if (mcateg_name.equalsIgnoreCase("Pro Games")){
+		 			btn_join_game.setText("RSVP");
+		 			btn_leave_game.setText("Cancel");
+		 			btn_player_list.setText("Attendees");
+		 			lbl_players.setText("");
+		 			
+		 		}else{
+		 			
+		 		}
+				
+				//remove "@example.com" if mCreated is an email
+				if (mCreatedBy.indexOf('@')!= -1){
+					mCreatedBy=mCreatedBy.substring(0,mCreatedBy.indexOf('@'));
+				}
 				lbl_createdby.setText("created by "+mCreatedBy);
 				lblAddress.setText(mAddress);
 				lblPhone.setText(mPhone);
@@ -476,7 +514,7 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 //				}
 //				
 				
-				if(mcateg_name.equalsIgnoreCase("open")){
+				if(mcateg_name.equalsIgnoreCase("Players Needed") || mcateg_name.equalsIgnoreCase("Pro Games")){
 					btn_join_game.setVisibility(View.VISIBLE);
 					btn_leave_game.setVisibility(View.GONE);
 					
@@ -487,9 +525,15 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 							dec_players=14;
 						if(mgame_type.equalsIgnoreCase("11 vs 11"))
 							dec_players=22;
+						if (mcateg_name.equalsIgnoreCase("Pro Games"))	
+							dec_players=1000;
+		
+					
 					}
 					
-				}else{
+				}
+				
+				else{
 					btn_join_game.setVisibility(View.GONE);
 				}
 				
@@ -509,7 +553,12 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 					
 				}
 				
+				if(mcateg_name.equalsIgnoreCase("Players Needed") ){
 				lbl_players.setText(dec_players+" Players Needed");
+				}else{
+					lbl_players.setText("");
+				}
+			
 				
 				/*if(mgame_type.equalsIgnoreCase("5 vs 5"))
 					lbl_players.setText(dec_players+" Players Needed");
@@ -673,6 +722,7 @@ public class ActivityDetailPlace extends ActionBarActivity implements OnClickLis
 				mJoinedBy			 = locationObject.getString(userFunction.key_joined_by);
 				
 				dec_players		 = Integer.parseInt(locationObject.getString(userFunction.key_tot_players));
+				
             }      
             
         } catch (JSONException e) {

@@ -1,5 +1,6 @@
 package com.cmu.timball;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.cmu.timball.ActivityDetailPlace.JoingameAsyncTask;
 import com.cmu.timball.libraries.UserFunctions;
 
@@ -22,7 +23,7 @@ public class ActivityProfile extends ActionBarActivity {
 	public final static String EXTRA_EMAIL = "email";
 	private ActionBar actionbar;
 	TextView lbl_email_id;
-	Button btn_logout;
+	BootstrapButton btn_logout;
 	Global_data gda;
 	Context cntxt;
 	
@@ -47,7 +48,7 @@ public class ActivityProfile extends ActionBarActivity {
      	
      	lbl_email_id = (TextView) findViewById(R.id.lbl_email_id);
      	
-     	btn_logout = (Button) findViewById(R.id.btn_logout);
+     	btn_logout = (BootstrapButton) findViewById(R.id.btn_logout);
    
      	lbl_email_id.setText(gda.loadSavedPreferences_string(gda.TAG_EMAIL, cntxt));
      	

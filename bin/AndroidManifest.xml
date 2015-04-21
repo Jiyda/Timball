@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cmu.timball"
+    android:versionCode="6"
+    android:versionName="1.2.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="21" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- GCM requires a Google account. -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+    <!-- Keeps the processor from sleeping when a message is received. -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- This app has permission to register and receive data message. -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <!-- Creates a custom permission so only this app can receive its messages. -->
+    <permission
+        android:name="com.cmu.timball.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.cmu.timball.permission.C2D_MESSAGE" />
+
+    <!-- Permission to vibrate -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <!-- External storage for caching. -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- My Location -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+<uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- change com.cmu.timball with your own package name -->
+    <permission
+        android:name="com.cmu.timball.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.cmu.timball.permission.MAPS_RECEIVE" />
+
+    <!-- Maps API needs OpenGL ES 2.0. -->
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+    <!-- End of copy. -->
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:logo="@drawable/logo"
+        android:theme="@style/Theme.Apptheme"
+        android:name="Timball" >
+
+        <!-- Admob -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <!-- Google Maps for Android API v2 key. AIzaSyAzI-6gg36mNW_86X7nu48tGe8GhVavIzY  --> 
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyAzI-6gg36mNW_86X7nu48tGe8GhVavIzY" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".ActivityWelcome"
+            android:label="@string/app_name"
+             android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:launchMode="singleInstance"
+            android:theme="@style/Theme.Apptheme.NoActionBar" 
+          >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ActivityHome"
+            android:label="@string/app_name"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value="com.cmu.timball.ActivitySearch" />
+        </activity>
+        <activity
+            android:name=".ActivitySearch"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+         <activity
+            android:name=".ActivityAddLocation"
+            android:screenOrientation="portrait"
+            android:label="Create Game" />
+          <activity
+            android:name=".ActivityPickPlace"
+            android:screenOrientation="portrait"
+            android:label="Pick Place" />
+        
+        <activity
+            android:name=".ActivityPlaceAroundYou"
+            android:label="@string/page_around_you"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityCategory"
+            android:label="@string/page_category"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityPlaceList"
+            android:label="@string/page_place_list"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityDetailPlace"
+            android:label="@string/page_detail_place"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivitySetting"
+            android:label="@string/page_setting"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityShare"
+            android:label="@string/page_share" />
+        <activity
+            android:name=".ActivityPlayerList"
+            android:label="Players" />
+        <activity
+            android:name=".ActivityAbout"
+            android:label="@string/page_about" />
+        <activity android:name=".ActivityLogin" android:launchMode="singleInstance"/>
+        <activity android:name=".ActivitySignUp"/>
+         <activity android:name=".ActivityLogin2" />
+        <activity android:name=".ActivitySignUp2"/>
+       
+        <activity
+            android:name=".ActivityDirection"
+            android:label="@string/direction" />
+        <activity
+        android:name=".ActivityGamesJoined"
+        android:label="@string/page_games_joined" />
+        <activity android:name="com.instabug.library.activity.InstabugAnnotationActivity"
+  android:windowSoftInputMode="adjustPan" />
+        <activity android:name="com.instabug.library.InstabugFeedbackActivity"
+  android:windowSoftInputMode="adjustPan" />
+        
+<service android:name="com.instabug.library.network.UploadCacheService"/>
+<receiver android:name="com.instabug.library.network.InstabugNetworkReceiver">
+  <intent-filter>
+            <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+  </intent-filter>
+</receiver>
+ 
+        
+        
+        <activity
+            android:name=".ActivityBrowser"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:uiOptions="splitActionBarWhenNarrow" >
+            <meta-data
+                android:name="android.support.UI_OPTIONS"
+                android:value="splitActionBarWhenNarrow" />
+        </activity>
+        <activity
+            android:name="com.facebook.LoginActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <provider
+            android:name=".libraries.SuggestionProvider"
+            android:authorities="com.cmu.timball.libraries.SuggestionProvider"
+            android:exported="false" />
+
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+
+        <service
+            android:name=".libraries.ServiceNotification"
+            android:process=":remote" />
+
+        <receiver
+            android:name="com.google.android.gcm.GCMBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+
+                <!-- Receives the actual messages. -->
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <!-- Receives the registration id. -->
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.cmu.timball" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".GCMIntentService" />
+
+        <activity
+            android:name=".ActivityProfile"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_activity_profile" >
+        </activity>
+    </application>
+
+</manifest>
